@@ -1,0 +1,114 @@
+# import "../instructions/instructions.gql"
+# import "../recipe-ingredients/recipe-ingredients.gql"
+
+"""
+Represents a recipe entity.
+"""
+type Recipe {
+  """
+  Unique identifier associated to the recipe.
+  """
+  id: ID!
+  """
+  Title of the recipe.
+  """
+  title: String!
+  """
+  Optionally, a description of the recipe.
+  """
+  description: String
+  """
+  Seconds since the UNIX epoch when this entity was inserted in the data store.
+  """
+  createdAt: Int!
+  """
+  Seconds since the UNIX epoch when this entity was most recently updated in
+  the data store.
+  """
+  updatedAt: Int!
+  """
+  List of associated recipe ingredient **entities** (objects). This list can be
+  empty if no recipe ingredients have been defined for this recipe yet.
+  """
+  recipeIngredients: [RecipeIngredient!]! @blossomImpl(type: async)
+  """
+  List of associated instruction **entities** (objects). This list can be empty
+  if no instructions have been defined for this recipe yet.
+  """
+  instructions: [Instruction!]! @blossomImpl(type: async)
+}
+
+"""
+Payload for creating a recipe.
+"""
+input CreateRecipePayload {
+  """
+  Title of the recipe.
+  """
+  title: String!
+  """
+  Optionally, a description of the recipe.
+  """
+  description: String
+}
+
+"""
+Payload for updating a recipe.
+"""
+input UpdateRecipePayload {
+  """
+  Title of the recipe.
+  """
+  title: String
+  """
+  Optionally, a description of the recipe.
+  """
+  description: String
+}
+
+extend type Query {
+  """
+  Retrieves a recipe by ID. If the recipe does not exist, this will return null.
+  """
+  recipe(
+    """
+    Unique identifier of the recipe that needs to be retrieved.
+    """
+    id: ID!
+  ): Recipe
+}
+
+extend type Mutation {
+  """
+  Creates a recipe based on a payload. Returns the newly created recipe entity.
+  """
+  createRecipe(
+    """
+    Payload for creating the recipe.
+    """
+    payload: CreateRecipePayload!
+  ): Recipe!
+  """
+  Updates an existing recipe based on its identifier and a  a payload. Returns
+  the update recipe entity.
+  """
+  updateRecipe(
+    """
+    Identifier of the recipe. If not found, an error will be returned.
+    """
+    id: ID!
+    """
+    Payload for updating the recipe.
+    """
+    payload: UpdateRecipePayload!
+  ): Recipe!
+  """
+  Deletes a recipe based on ID. Returns the ID of the deleted recipe.
+  """
+  deleteRecipe(
+    """
+    Identifier of the recipe. If not found, an error will be returned.
+    """
+    id: ID!
+  ): ID!
+}

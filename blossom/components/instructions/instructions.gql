@@ -1,0 +1,90 @@
+# import "../recipes/recipes.gql"
+
+"""
+Represents an instruction entity.
+"""
+type Instruction {
+  """
+  Unique identifier of this instruction.
+  """
+  id: ID!
+  """
+  Identifier of the recipe this instruction is associated to.
+  """
+  recipeId: ID!
+  """
+  Contents of the instruction.
+  """
+  instructionContent: String!
+  """
+  Seconds since the UNIX epoch when this entity was inserted in the data store.
+  """
+  createdAt: Int!
+  """
+  Seconds since the UNIX epoch when this entity was most recently updated in
+  the data store.
+  """
+  updatedAt: Int!
+  """
+  Associated recipe **entity** (object).
+  """
+  recipe: Recipe! @blossomImpl(type: async)
+}
+
+"""
+Payload for creating an instruction.
+"""
+input CreateInstructionPayload {
+  """
+  Identifier of the recipe this instruction will be associated to.
+  """
+  recipeId: ID!
+  """
+  Contents of the instruction. Not optional.
+  """
+  instructionContent: String!
+}
+
+"""
+Payload for updating an instruction.
+"""
+input UpdateInstructionPayload {
+  """
+  Contents of the instruction. Not optional.
+  """
+  instructionContent: String
+}
+
+extend type Mutation {
+  """
+  Creates an instruction and returns the newly created entity.
+  """
+  createInstruction(
+    """
+    Payload for creating the instruction.
+    """
+    payload: CreateInstructionPayload!
+  ): Instruction!
+  """
+  Updates an existing instruction and returns the newly update entity.
+  """
+  updateInstruction(
+    """
+    ID of the existing instruction. Will return an error if not found.
+    """
+    id: ID!
+    """
+    Payload for updating the instruction.
+    """
+    payload: UpdateInstructionPayload!
+  ): Instruction!
+  """
+  Deletes an instruction based on ID. Returns the ID of the deleted instruction.
+  """
+  deleteInstruction(
+    """
+    ID of the existing instruction. Will return an error if not found.
+    """
+    id: ID!
+  ): ID!
+}

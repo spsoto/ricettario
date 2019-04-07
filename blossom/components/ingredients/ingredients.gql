@@ -1,0 +1,83 @@
+"""
+Represents an ingredient entity.
+"""
+type Ingredient {
+  """
+  Unique identifier of the ingredient.
+  """
+  id: ID!
+  """
+  Name of the ingredient. Must always be present.
+  """
+  name: String!
+  """
+  Seconds since the UNIX epoch when this entity was inserted in the data store.
+  """
+  createdAt: Int!
+  """
+  Seconds since the UNIX epoch when this entity was most recently updated in
+  the data store.
+  """
+  updatedAt: Int!
+}
+
+"""
+Payload for creating an ingredient.
+"""
+input CreateIngredientPayload {
+  """
+  Name of the ingredient. Non-optional for creation.
+  """
+  name: String!
+}
+
+"""
+Payload for updating an ingredient.
+"""
+input UpdateIngredientPayload {
+  """
+  Name of the ingredient. Optional on update. However, trying to null it will
+  return an error.
+  """
+  name: String
+}
+
+extend type Query {
+  """
+  Retrieves an ingredient by ID. Will return `null` if the ingredient is not
+  found.
+  """
+  ingredient(
+    """
+    ID of the ingredient.
+    """
+    id: ID!
+  ): Ingredient
+}
+
+extend type Mutation {
+  """
+  Creates an ingredient based on a payload. Returns the newly created ingredient.
+  """
+  createIngredient(
+    """
+    Payload for creating the ingredient.
+    """
+    payload: CreateIngredientPayload!
+  ): Ingredient!
+  """
+  Updates a single existing ingredient by looking up by ID and giving an payload.
+  Returns the updated ingredient.
+  """
+  updateIngredient(
+    """
+    ID of the existing ingredient. Will return an error if the ingredient is not
+    found.
+    """
+    id: ID!
+    """
+    Payload for updating the ingredient.
+    """
+    payload: UpdateIngredientPayload!
+  ): Ingredient!
+}

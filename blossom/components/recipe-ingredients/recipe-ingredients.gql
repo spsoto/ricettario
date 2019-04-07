@@ -1,0 +1,186 @@
+# import "../ingredients/ingredients.gql"
+
+"""
+A list with all the possible units for a recipe ingredient.
+"""
+enum Unit {
+  """
+  Kilograms
+  """
+  KG
+  """
+  Grams
+  """
+  G
+  """
+  Ounces (weight)
+  """
+  OZ
+  """
+  Pounds
+  """
+  LB
+  """
+  Fluid Ounces
+  """
+  FL_OZ
+  """
+  Milliliters
+  """
+  ML
+  """
+  Liters
+  """
+  L
+  """
+  Units (for specifying units)
+  """
+  U
+  """
+  Cups
+  """
+  CUP
+  """
+  Tablespoons
+  """
+  TBSP
+  """
+  Teaspoons
+  """
+  TSP
+  """
+  To taste
+  """
+  TO_TASTE
+}
+
+"""
+A resource for representing a `recipe_ingredient` entity.
+"""
+type RecipeIngredient {
+  """
+  Unique identifier of the resource.
+  """
+  id: ID!
+  """
+  **Identifier** of the associated recipe for this recipe ingredient.
+  """
+  recipeId: ID!
+  """
+  **Identifier** of the associated ingredient for this recipe ingredient.
+  """
+  ingredientId: ID!
+  """
+  Special instructions for giving special indications about the ingredient in the
+  context of this recipe.
+  """
+  specialInstructions: String
+  """
+  Float number that specifies the quantity of the ingredient on this recipe. If it's
+  marked as *to_taste* (`unit = TO_TASTE`), this will be `0`.
+  """
+  quantity: Float!
+  """
+  Unit for this recipe ingredient.
+  """
+  unit: Unit!
+  """
+  Seconds since the UNIX epoch when this entity was inserted in the data store.
+  """
+  createdAt: Int!
+  """
+  Seconds since the UNIX epoch when this entity was most recently updated in
+  the data store.
+  """
+  updatedAt: Int!
+  """
+  Associated ingredient **entity** for this recipe ingredient.
+  """
+  ingredient: Ingredient! @blossomImpl(type: async)
+}
+
+"""
+Payload for creating a new recipe ingredient.
+"""
+input CreateRecipeIngredientPayload {
+  """
+  Identifier of the recipe this recipe ingredient is associated to.
+  """
+  recipeId: ID!
+  """
+  Identifier of the ingredient this recipe ingredient is associated to.
+  """
+  ingredientId: ID!
+  """
+  Special instructions for giving special indications about the ingredient in the
+  context of this recipe.
+  """
+  specialInstructions: String
+  """
+  Float number that specifies the quantity of the ingredient on this recipe. If it's
+  marked as *to_taste* (`unit = TO_TASTE`), this will be `0`.
+  """
+  quantity: Float!
+  """
+  Unit for this recipe ingredient.
+  """
+  unit: Unit!
+}
+
+"""
+Payload for updating an existing recipe ingredient. Notice that associated entities
+are no longer editable, thus they are not listed as fields.
+"""
+input UpdateRecipeIngredientPayload {
+  """
+  Special instructions for giving special indications about the ingredient in the
+  context of this recipe.
+  """
+  specialInstructions: String
+  """
+  Float number that specifies the quantity of the ingredient on this recipe. If it's
+  marked as *to_taste* (`unit = TO_TASTE`), this will be `0`.
+  """
+  quantity: Float
+  """
+  Unit for this recipe ingredient.
+  """
+  unit: Unit
+}
+
+# Do NOT put docstrings here.
+extend type Mutation {
+  """
+  Creates a new recipe ingredient on an existing recipe and making use of an existing
+  ingredient. Returns the newly created recipe ingredient.
+  """
+  createRecipeIngredient(
+    """
+    Object with the payload for the recipe ingredient to be created.
+    """
+    payload: CreateRecipeIngredientPayload!
+  ): RecipeIngredient!
+  """
+  Updates an existing recipe ingredient and returns the updated recipe ingredient.
+  """
+  updateRecipeIngredient(
+    """
+    Identifier of the recipe ingredient. If not found, an error will be raised.
+    """
+    id: ID!
+    """
+    Object with the associated payload for updating the ingredient.
+    """
+    payload: UpdateRecipeIngredientPayload!
+  ): RecipeIngredient!
+  """
+  Deletes an existing recipe ingredient based on the ID. Returns the ID of the
+  deleted recipe ingredient.
+  """
+  deleteRecipeIngredient(
+    """
+    Identifier of the recipe ingredient. If not found, this will raise an error.
+    """
+    id: ID!
+  ): ID!
+}
