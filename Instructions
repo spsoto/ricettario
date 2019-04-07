@@ -1,0 +1,18 @@
+- Follow getting started
+- Remove example, posts and comments.
+- Create GraphQL for the Schemas. Some things need to be pointed out:
+  * Explain why the use of extend.
+  * Casing used.
+  * CRUD convention
+  * Use of enum
+  * Use Payload for payloads
+  * Explain what ID! does.
+  * Notice the difference between create and update.
+  * Mention docstrings. Compare them to #. Encourage the use of docstrings.
+    Show that they can be used everywhere.
+  * Explain why returning `null` on non existing resources instead of raising an
+    error.
+
+Features that might be missed:
+Pagination.
+Definition of scalars.
