@@ -1,0 +1,5 @@
+#!/bin/sh
+
+source .config.sh
+
+docker volume create ${PROJECT_NAME}-pgdata
