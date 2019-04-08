@@ -20,9 +20,15 @@
     TypeScript will help you introducing the required refactorings.
 
 Features that might be missed:
-Pagination.
+Pagination, i.e. handling for connections
 Definition of scalars.
 When type Query is not in the file, ObjectResolverSignature appears anyway.
-Implement a build command that creates a production artifact.
+Implement a build command that creates a production artifact
 + guide on how to bundle a docker package
 Support for multiple files in pumpkin codegen
+Update coverage for core
+Update coverage for toolbelt
+Setup CI: linting + prettier
+Setup CI: tests
+Create release script
+Setup CI (on release): push to npm
