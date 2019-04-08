@@ -18,14 +18,14 @@ type Recipe {
   """
   description: String
   """
-  Seconds since the UNIX epoch when this entity was inserted in the data store.
+  Millis since the UNIX epoch when this entity was inserted in the data store.
   """
-  createdAt: Int!
+  createdAt: Float!
   """
-  Seconds since the UNIX epoch when this entity was most recently updated in
+  Millis since the UNIX epoch when this entity was most recently updated in
   the data store.
   """
-  updatedAt: Int!
+  updatedAt: Float!
   """
   List of associated recipe ingredient **entities** (objects). This list can be
   empty if no recipe ingredients have been defined for this recipe yet.

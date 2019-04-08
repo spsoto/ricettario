@@ -13,6 +13,16 @@
   * Explain why returning `null` on non existing resources instead of raising an
     error.
 
+- Run codegen.
+  * Point out that there's nothing voodoo happening here.
+  * This is for bootstrapping the component.
+  * Later on, when updating the schema, you're supposed to only update the types.
+    TypeScript will help you introducing the required refactorings.
+
 Features that might be missed:
 Pagination.
 Definition of scalars.
+When type Query is not in the file, ObjectResolverSignature appears anyway.
+Implement a build command that creates a production artifact.
++ guide on how to bundle a docker package
+Support for multiple files in pumpkin codegen

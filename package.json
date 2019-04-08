@@ -20,12 +20,17 @@
   },
   "dependencies": {
     "@blossom-gql/core": "/blossom/packages/core",
+    "@types/lodash": "^4.14.123",
     "graphql": "^14.0.2",
     "graphql-playground-middleware-koa": "^1.6.8",
     "koa": "^2.6.2",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
     "koa2-cors": "^2.0.6",
+    "lodash": "^4.17.11",
+    "pg": "^7.9.0",
+    "pg-hstore": "^2.3.2",
+    "pg-native": "^3.0.0",
     "sequelize": "^5.2.12",
     "source-map-support": "^0.5.9"
   }
