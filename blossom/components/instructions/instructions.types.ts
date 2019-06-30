@@ -31,11 +31,11 @@ export type Instruction = {
    */
   instructionContent: string;
   /**
-   * Seconds since the UNIX epoch when this entity was inserted in the data store.
+   * Millis since the UNIX epoch when this entity was inserted in the data store.
    */
   createdAt: number;
   /**
-   * Seconds since the UNIX epoch when this entity was most recently updated in
+   * Millis since the UNIX epoch when this entity was most recently updated in
    * the data store.
    */
   updatedAt: number;
