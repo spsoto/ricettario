@@ -18,7 +18,7 @@ export const createRecipeIngredientRootMutation: CreateRecipeIngredientMutation 
     recipeId: args.payload.recipeId,
     ingredientId: args.payload.ingredientId,
     specialInstructions: args.payload.specialInstructions,
-    quantity: args.payload.specialInstructions,
+    quantity: args.payload.quantity,
     unit: args.payload.unit,
   });
 

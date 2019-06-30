@@ -4,11 +4,11 @@ import { RequestContext, resolveArray } from 'blossom/instance';
 import { Recipe } from 'blossom/components/recipes/recipes.types';
 
 import RecipeModel from 'lib/models/recipe.model';
-import InstructionModel from 'lib/models/instruction.model';
 
 import { instructionByRecipeId } from '../instructions/instructions.sources';
 import { instructionResolver } from '../instructions/instructions.resolvers';
-import { Instruction } from '../instructions/instructions.types';
+import { recipeIngredientsByRecipeId } from '../recipe-ingredients/recipe-ingredients.sources';
+import { recipeIngredientResolver } from '../recipe-ingredients/recipe-ingredients.resolvers';
 
 export const recipeResolver: Resolver<
   RecipeModel,
@@ -24,8 +24,15 @@ export const recipeResolver: Resolver<
     description: attributes.description,
     createdAt: attributes.createdAt.getTime(),
     updatedAt: attributes.updatedAt.getTime(),
-    async recipeIngredients() {
-      return [];
+    async recipeIngredients(_, ctx, ast) {
+      const recipeIngredients = await ctx.loader(recipeIngredientsByRecipeId).load(id);
+
+      return resolveArray({
+        data: recipeIngredients,
+        ctx,
+        using: recipeIngredientResolver,
+        ast,
+      });
     },
     async instructions(_, ctx, ast) {
       const instructions = await ctx.loader(instructionByRecipeId).load(id);
