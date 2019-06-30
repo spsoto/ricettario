@@ -4,6 +4,7 @@ services:
   backend:
     image: node:11.12
     init: true
+    command: npx blossom s
     environment:
     - POSTGRES_URL=postgres://graphql:backend@postgres:5432/${PROJECT_NAME}
     ports:
