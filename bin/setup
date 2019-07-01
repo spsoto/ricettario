@@ -3,3 +3,6 @@
 source .config.sh
 
 docker volume create ${PROJECT_NAME}-pgdata
+docker-compose -p ricettario run --rm backend yarn 
+docker-compose -p ricettario run --rm frontend yarn
+ 

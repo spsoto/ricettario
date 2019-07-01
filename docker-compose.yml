@@ -18,6 +18,18 @@ services:
     depends_on:
     - postgres
 
+  frontend:
+    image: node:11.12
+    init: true
+    command: yarn start
+    ports:
+    - 3001:3000
+    working_dir: /var/app
+    volumes:
+    - ./ui:/var/app
+    depends_on:
+    - backend
+
   postgres:
     image: postgres:11.2
     environment:
