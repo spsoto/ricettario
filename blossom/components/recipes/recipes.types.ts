@@ -37,11 +37,11 @@ export type Recipe = {
    */
   description?: Maybe<string>;
   /**
-   * Seconds since the UNIX epoch when this entity was inserted in the data store.
+   * Millis since the UNIX epoch when this entity was inserted in the data store.
    */
   createdAt: number;
   /**
-   * Seconds since the UNIX epoch when this entity was most recently updated in
+   * Millis since the UNIX epoch when this entity was most recently updated in
    * the data store.
    */
   updatedAt: number;
@@ -110,6 +110,16 @@ export type RecipeQuery = QueryResolverSignature<
     id: string;
   },
   Promise<Maybe<Recipe>>,
+  RequestContext
+>;
+
+/**
+ * Retrieves the entire list of recipes stored in the database. **TODO:** Make me
+ * paginated.
+ */
+export type RecipesQuery = QueryResolverSignature<
+  {},
+  Promise<ReadonlyArray<Recipe>>,
   RequestContext
 >;
 

@@ -76,6 +76,11 @@ extend type Query {
     """
     id: ID!
   ): Recipe
+  """
+  Retrieves the entire list of recipes stored in the database. **TODO:** Make me
+  paginated.
+  """
+  recipes: [Recipe!]!
 }
 
 extend type Mutation {

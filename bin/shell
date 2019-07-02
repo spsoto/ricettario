@@ -2,4 +2,4 @@
 
 source .config.sh
 
-docker-compose -p $PROJECT_NAME run --rm $1 bash
+docker-compose -p $PROJECT_NAME run --rm ${1:-backend} bash

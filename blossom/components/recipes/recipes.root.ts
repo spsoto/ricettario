@@ -1,6 +1,7 @@
-import { resolve, BlossomRootQuery, BlossomRootMutation } from 'blossom/instance';
+import { resolve, resolveArray, BlossomRootQuery, BlossomRootMutation } from 'blossom/instance';
 import {
   RecipeQuery,
+  RecipesQuery,
   CreateRecipeMutation,
   UpdateRecipeMutation,
   DeleteRecipeMutation,
@@ -26,6 +27,24 @@ export const recipeRootQuery: RecipeQuery = async function recipeRootQuery(args,
 
 // Registers the functon above as a root value in the Blossom instance.
 BlossomRootQuery({ implements: 'recipe', using: recipeRootQuery });
+
+// Added later by using:
+// ```
+// npx blossom cg root -f blossom/components/recipes/recipes.gql --stdout
+// ```
+export const recipesRootQuery: RecipesQuery = async function recipesRootQuery(args, ctx, ast) {
+  const data = await Recipe.findAll();
+
+  return resolveArray({
+    data,
+    ctx,
+    using: recipeResolver,
+    ast,
+  });
+};
+
+// Registers the functon above as a root value in the Blossom instance.
+BlossomRootQuery({ implements: 'recipes', using: recipesRootQuery });
 
 export const createRecipeRootMutation: CreateRecipeMutation = async function createRecipeRootMutation(
   args,
