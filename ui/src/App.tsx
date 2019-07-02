@@ -15,7 +15,7 @@ const App = () => (
         </span>
       </NavbarBrand>
     </Navbar>
-    <div className="container">
+    <div className="container main">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sodales, neque eu ultricies
         aliquet, nisl lacus aliquet nulla, at placerat diam quam in lectus. Quisque blandit sapien

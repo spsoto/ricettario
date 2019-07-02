@@ -1,5 +1,7 @@
-@import url('~bootstrap/dist/css/bootstrap.min.css');
+@import './overrides';
+@import '~bootstrap/scss/bootstrap.scss';
 @import url('https://fonts.googleapis.com/css?family=Merriweather&display=swap');
+
 
 body, html {
   font-family: 'Merriweather', serif;
@@ -7,4 +9,8 @@ body, html {
 
 .navbar-brand {
   font-size: 1.5rem;
+}
+
+.main {
+  padding-top: 5rem;
 }
