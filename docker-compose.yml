@@ -14,7 +14,7 @@ services:
     - .:/var/app
     # For blossom development only! If this goes to a template. This **should not**
     # be included as a part of it. Instead, it should rely on the versioned package.
-    - ${BLOSSOM_DEV_PATH}:/blossom
+    - ${BLOSSOM_DEV_PATH}:/usr/local/include/blossom
     depends_on:
     - postgres
 

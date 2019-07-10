@@ -1,8 +1,10 @@
 #!/bin/sh
 
-source .config.sh
+set -e
+source bin/config
 
 docker volume create ${PROJECT_NAME}-pgdata
 docker-compose -p ricettario run --rm backend yarn 
 docker-compose -p ricettario run --rm frontend yarn
  
+ln -s $BLOSSOM_DEV_PATH /usr/local/include/blossom

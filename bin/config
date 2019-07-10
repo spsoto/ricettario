@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ -z $BLOSSOM_DEV_PATH ]; then
+  echo 'Please set up the $BLOSSOM_DEV_PATH environment variable before proceeding.'
+  exit 1
+fi
+
+export PROJECT_NAME=ricettario
+
+trap "docker-compose -p $PROJECT_NAME down" SIGINT EXIT

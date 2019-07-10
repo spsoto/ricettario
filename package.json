@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "@blossom-gql/toolbelt": "/blossom/packages/toolbelt",
+    "@blossom-gql/toolbelt": "/usr/local/include/blossom/packages/toolbelt",
     "@types/bluebird": "^3.5.26",
     "@types/graphql": "^14.0.3",
     "@types/jest": "^23.3.10",
@@ -19,7 +19,7 @@
     "prettier": "^1.16.0"
   },
   "dependencies": {
-    "@blossom-gql/core": "/blossom/packages/core",
+    "@blossom-gql/core": "/usr/local/include/blossom/packages/core",
     "@koa/cors": "^3.0.0",
     "@types/lodash": "^4.14.123",
     "graphql": "^14.0.2",

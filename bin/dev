@@ -1,5 +1,5 @@
 #!/bin/sh
 
-source .config.sh
+source bin/config
 
 docker-compose -p $PROJECT_NAME up
