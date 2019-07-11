@@ -1,4 +1,8 @@
-import { BatchFunction, Maybe, deliver } from '@blossom-gql/core';
+import { BatchFunction, Maybe, deliver, connectionDataLoader } from '@blossom-gql/core';
+import {
+  sequelizeConnectionAdapter,
+  SequelizeConnectionArgsMapper,
+} from '@blossom-gql/helpers-sequelize';
 import { Op } from 'sequelize';
 
 import { RequestContext } from 'blossom/instance';
@@ -19,3 +23,17 @@ export const recipeById: BatchFunction<
 
   return deliver(ids, recipes, recipe => recipe.id.toString());
 };
+
+export const recipeConnectionArgsMapper: SequelizeConnectionArgsMapper<
+  any,
+  Recipe,
+  RequestContext
+> = () => {
+  return {
+    where: {},
+  };
+};
+
+export const recipeConnectionLoader = connectionDataLoader(
+  sequelizeConnectionAdapter(Recipe, recipeConnectionArgsMapper),
+);

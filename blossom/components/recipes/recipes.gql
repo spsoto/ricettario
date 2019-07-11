@@ -4,7 +4,7 @@
 """
 Represents a recipe entity.
 """
-type Recipe {
+type Recipe @hasConnection {
   """
   Unique identifier associated to the recipe.
   """
@@ -37,6 +37,16 @@ type Recipe {
   """
   instructions: [Instruction!]! @blossomImpl(type: async)
 }
+
+# type RecipeEdge {
+#   node: Recipe! @blossomImpl(type: function)
+#   cursor: String! @blossomImpl(type: function)
+# }
+
+# type RecipeConnection {
+#   edges: [RecipeEdge!]! @blossomImpl(type: async)
+#   pageInfo: PageInfo!
+# }
 
 """
 Payload for creating a recipe.
@@ -77,10 +87,9 @@ extend type Query {
     id: ID!
   ): Recipe
   """
-  Retrieves the entire list of recipes stored in the database. **TODO:** Make me
-  paginated.
+  Retrieves the entire list of recipes stored in the database. Paginated results.
   """
-  recipes: [Recipe!]!
+  recipes(first: Int, after: String, last: Int, before: String): RecipeConnection!
 }
 
 extend type Mutation {

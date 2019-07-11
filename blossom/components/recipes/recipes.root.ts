@@ -1,4 +1,4 @@
-import { resolve, resolveArray, BlossomRootQuery, BlossomRootMutation } from 'blossom/instance';
+import { resolve, BlossomRootQuery, BlossomRootMutation } from 'blossom/instance';
 import {
   RecipeQuery,
   RecipesQuery,
@@ -6,10 +6,14 @@ import {
   UpdateRecipeMutation,
   DeleteRecipeMutation,
 } from 'blossom/components/recipes/recipes.types';
-import { recipeResolver } from 'blossom/components/recipes/recipes.resolvers';
+import {
+  recipeResolver,
+  recipeConnectionResolver,
+} from 'blossom/components/recipes/recipes.resolvers';
 import Recipe from 'lib/models/recipe.model';
 
-import { recipeById } from './recipes.sources';
+import { recipeById, recipeConnectionLoader } from './recipes.sources';
+import { LoadOrder } from '@blossom-gql/core';
 
 export const recipeRootQuery: RecipeQuery = async function recipeRootQuery(args, ctx, ast) {
   const recipe = await ctx.loader(recipeById).load(args.id);
@@ -33,12 +37,23 @@ BlossomRootQuery({ implements: 'recipe', using: recipeRootQuery });
 // npx blossom cg root -f blossom/components/recipes/recipes.gql --stdout
 // ```
 export const recipesRootQuery: RecipesQuery = async function recipesRootQuery(args, ctx, ast) {
-  const data = await Recipe.findAll();
+  const { first, last, after, before } = args;
 
-  return resolveArray({
-    data,
+  return resolve({
+    data: recipeConnectionLoader(
+      {},
+      {
+        primary: 'id',
+        order: LoadOrder.ASC,
+        first,
+        last,
+        after,
+        before,
+      },
+      ctx,
+    ),
     ctx,
-    using: recipeResolver,
+    using: recipeConnectionResolver,
     ast,
   });
 };

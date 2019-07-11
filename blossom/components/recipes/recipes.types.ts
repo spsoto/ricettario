@@ -9,6 +9,7 @@ import {
   QueryResolverSignature,
   MutationResolverSignature,
   ObjectResolverSignature,
+  Connection,
 } from '@blossom-gql/core';
 
 import { RequestContext } from 'blossom/instance';
@@ -60,6 +61,12 @@ export type Recipe = {
    */
   instructions: ObjectResolverSignature<{}, Promise<ReadonlyArray<Instruction>>, RequestContext>;
 };
+
+/**
+ * This is the connection type that must be returned on a field or operation that
+ * resolves to a Connection.
+ */
+export type RecipeConnection = Connection<Recipe, RequestContext>;
 
 /**
  * Payload for creating a recipe.
@@ -114,12 +121,16 @@ export type RecipeQuery = QueryResolverSignature<
 >;
 
 /**
- * Retrieves the entire list of recipes stored in the database. **TODO:** Make me
- * paginated.
+ * Retrieves the entire list of recipes stored in the database. Paginated results.
  */
 export type RecipesQuery = QueryResolverSignature<
-  {},
-  Promise<ReadonlyArray<Recipe>>,
+  {
+    first?: Maybe<number>;
+    after?: Maybe<string>;
+    last?: Maybe<number>;
+    before?: Maybe<string>;
+  },
+  Promise<RecipeConnection>,
   RequestContext
 >;
 

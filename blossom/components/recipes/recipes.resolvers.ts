@@ -1,6 +1,6 @@
-import { Resolver } from '@blossom-gql/core';
+import { Resolver, Connection, ConnectionData } from '@blossom-gql/core';
 
-import { RequestContext, resolveArray } from 'blossom/instance';
+import { RequestContext, resolveArray, createConnectionResolver } from 'blossom/instance';
 import { Recipe } from 'blossom/components/recipes/recipes.types';
 
 import RecipeModel from 'lib/models/recipe.model';
@@ -46,3 +46,9 @@ export const recipeResolver: Resolver<
     },
   };
 };
+
+export const recipeConnectionResolver: Resolver<
+  ConnectionData<RecipeModel, RequestContext>,
+  Connection<Recipe, RequestContext>,
+  RequestContext
+> = createConnectionResolver('Recipe', recipeResolver);
