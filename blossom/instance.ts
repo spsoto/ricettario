@@ -1,8 +1,4 @@
-import {
-  BlossomContext,
-  BlossomInstance,
-  createBlossomDecorators,
-} from '@blossom-gql/core';
+import { BlossomContext, BlossomInstance, createBlossomDecorators } from '@blossom-gql/core';
 import { Context } from 'koa';
 
 // Creates a new BlossomInstance. You can have multiple instances, with their
@@ -20,6 +16,7 @@ const {
   BlossomError, // Subclass these in order to handle errors
   resolve, // Your resolver for this instance
   resolveArray, // Your resolver for arrays in this instance
+  createConnectionResolver, // Creates resolvers for connections
 } = createBlossomDecorators(instance);
 
 // Create a context to be used across the entire GraphQL request
@@ -34,4 +31,5 @@ export {
   RequestContext,
   resolve,
   resolveArray,
+  createConnectionResolver,
 };
