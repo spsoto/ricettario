@@ -18,39 +18,15 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@blossom-gql/core@file:../../blossom/packages/core":
+"@blossom-gql/core@file:../../../../usr/local/include/blossom/packages/core":
   version "0.0.0"
   dependencies:
     dataloader "^1.4.0"
 
-"@blossom-gql/toolbelt@/blossom/packages/toolbelt":
+"@blossom-gql/helpers-sequelize@file:../../../../usr/local/include/blossom/packages/helpers-sequelize":
   version "0.0.0"
-  dependencies:
-    "@types/cosmiconfig" "^5.0.3"
-    "@types/fs-extra" "^5.0.4"
-    "@types/graphql" "^14.2.2"
-    "@types/jest" "^23.3.10"
-    "@types/lodash" "^4.14.119"
-    "@types/node" "^10.12.15"
-    "@types/pluralize" "^0.0.29"
-    "@types/prettier" "^1.15.4"
-    chalk "^2.4.1"
-    commander "^2.20.0"
-    cosmiconfig "^5.2.1"
-    fs-extra "^7.0.1"
-    graphql "^14.4.2"
-    lodash "^4.17.14"
-    pluralize "^7.0.0"
-    tmp "^0.0.33"
-    tmp-promise "^1.0.5"
-    ts-loader "^6.0.4"
-    tsconfig-paths-webpack-plugin "^3.2.0"
-    typescript "^3.5.2"
-    webpack "^4.35.3"
-    webpack-node-externals "^1.7.2"
-    word-wrap "^1.2.3"
 
-"@blossom-gql/toolbelt@file:../../blossom/packages/toolbelt":
+"@blossom-gql/toolbelt@file:../../../../usr/local/include/blossom/packages/toolbelt":
   version "0.0.0"
   dependencies:
     "@types/cosmiconfig" "^5.0.3"
@@ -72,7 +48,7 @@
     tmp-promise "^1.0.5"
     ts-loader "^6.0.4"
     tsconfig-paths-webpack-plugin "^3.2.0"
-    typescript "^3.5.2"
+    typescript "^3.5.3"
     webpack "^4.35.3"
     webpack-node-externals "^1.7.2"
     word-wrap "^1.2.3"
@@ -157,11 +133,6 @@
   integrity sha512-w7iqhDH9mN8eLClQOYTkhdYUOSpp25eXxfc6VbFOGtzxW34JcvctH2bKjj4jD4++z4R5iO5D+pg48W2e03I65A==
   dependencies:
     "@types/node" "*"
-
-"@types/graphql@^14.0.3":
-  version "14.0.5"
-  resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-14.0.5.tgz#e696292fd2d77dc168b5b791710f83463aa39abd"
-  integrity sha512-bwGYLE0SRy5ZraC91dqI2bxbspfm10kyJ2Yjuvk4OjdGznh7fkoWW+xXZHfFydJaqu9syZi099cpiZw3GlPDiA==
 
 "@types/graphql@^14.2.2":
   version "14.2.2"
@@ -2248,13 +2219,6 @@ graphql-playground-middleware-koa@^1.6.8:
   integrity sha512-dRGsVyCFR4x/DQy3Ai06lRQBQNhmUceLE60mpc2VFsrXj+XlUp9Jp/m8rQMoKHnZEbSmMFXFjSISZtaWFysOaQ==
   dependencies:
     graphql-playground-html "1.6.6"
-
-graphql@^14.0.2:
-  version "14.1.1"
-  resolved "https://registry.yarnpkg.com/graphql/-/graphql-14.1.1.tgz#d5d77df4b19ef41538d7215d1e7a28834619fac0"
-  integrity sha512-C5zDzLqvfPAgTtP8AUPIt9keDabrdRAqSWjj2OPRKrKxI9Fb65I36s1uCs1UUBFnSWTdO7hyHi7z1ZbwKMKF6Q==
-  dependencies:
-    iterall "^1.2.2"
 
 graphql@^14.4.2:
   version "14.4.2"
@@ -4929,27 +4893,20 @@ semver@4.3.2:
   resolved "https://registry.yarnpkg.com/semver/-/semver-4.3.2.tgz#c7a07158a80bedd052355b770d82d6640f803be7"
   integrity sha1-x6BxWKgL7dBSNVt3DYLWZA+AO+c=
 
-semver@^5.6.0:
-  version "5.7.0"
-  resolved "https://registry.yarnpkg.com/semver/-/semver-5.7.0.tgz#790a7cf6fea5459bac96110b29b60412dc8ff96b"
-  integrity sha512-Ya52jSX2u7QKghxeoFGpLwCtGlt7j0oY9DYb5apt9nPlJ42ID+ulTXESnt/qAQcoSERyZ5sl3LDIOw0nAn/5DA==
-
-semver@^6.0.0:
+semver@^6.0.0, semver@^6.1.1:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-6.2.0.tgz#4d813d9590aaf8a9192693d6c85b9344de5901db"
   integrity sha512-jdFC1VdUGT/2Scgbimf7FSx9iJLXoqfglSF+gJeuNWVpiE37OIbc1jywR/GJyFdz3mnkz2/id0L0J/cr0izR5A==
 
-sequelize-pool@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/sequelize-pool/-/sequelize-pool-1.0.2.tgz#89c767882bbdb8a41dac66922ed9820939a5401e"
-  integrity sha512-VMKl/gCCdIvB1gFZ7p+oqLFEyZEz3oMMYjkKvfEC7GoO9bBcxmfOOU9RdkoltfXGgBZFigSChihRly2gKtsh2w==
-  dependencies:
-    bluebird "^3.5.3"
+sequelize-pool@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/sequelize-pool/-/sequelize-pool-2.3.0.tgz#64f1fe8744228172c474f530604b6133be64993d"
+  integrity sha512-Ibz08vnXvkZ8LJTiUOxRcj1Ckdn7qafNZ2t59jYHMX1VIebTAOYefWdRYFt6z6+hy52WGthAHAoLc9hvk3onqA==
 
-sequelize@^5.2.12:
-  version "5.2.12"
-  resolved "https://registry.yarnpkg.com/sequelize/-/sequelize-5.2.12.tgz#c9926d4a2553c5c0d70982ce46bc5b0aa4c6cbf9"
-  integrity sha512-Pgqri8SlWzd6gZCX0Zk0kTEnZlratF/W2l2A5zHtw4EMxL7jff+Jj8EazdTWqoh/1akCRn3iq2j/uMXcOBdhVQ==
+sequelize@^5.10.0:
+  version "5.10.0"
+  resolved "https://registry.yarnpkg.com/sequelize/-/sequelize-5.10.0.tgz#ffa72622d11fee87e002c6e7cfa68c1674755dd3"
+  integrity sha512-hceVQKM9WmdB1aM+F+Ach8aZrU7RMyPeXFol7de0HRo+GkAqSl054WB4a00CRVnZ/73/EdpXRJMKNLIjraSmOg==
   dependencies:
     bluebird "^3.5.0"
     cls-bluebird "^2.1.0"
@@ -4960,8 +4917,8 @@ sequelize@^5.2.12:
     moment "^2.24.0"
     moment-timezone "^0.5.21"
     retry-as-promised "^3.1.0"
-    semver "^5.6.0"
-    sequelize-pool "^1.0.2"
+    semver "^6.1.1"
+    sequelize-pool "^2.3.0"
     toposort-class "^1.0.1"
     uuid "^3.2.1"
     validator "^10.11.0"
@@ -5613,7 +5570,7 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^3.5.2:
+typescript@^3.5.3:
   version "3.5.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.5.3.tgz#c830f657f93f1ea846819e929092f5fe5983e977"
   integrity sha512-ACzBtm/PhXBDId6a6sDJfroT2pOWt/oOnk4/dElG5G33ZL776N3Y6/6bKZJBFpd+b05F3Ct9qDjMeJmRWtE2/g==
