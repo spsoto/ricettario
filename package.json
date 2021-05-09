@@ -28,7 +28,7 @@
     "koa": "^2.6.2",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "pg": "^7.9.0",
     "pg-hstore": "^2.3.2",
     "pg-native": "^3.0.0",
