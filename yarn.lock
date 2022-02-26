@@ -18,15 +18,15 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@blossom-gql/core@file:../../../../usr/local/include/blossom/packages/core":
+"@blossom-gql/core@file:../../../../../usr/local/include/blossom/packages/core":
   version "0.0.0"
   dependencies:
     dataloader "^1.4.0"
 
-"@blossom-gql/helpers-sequelize@file:../../../../usr/local/include/blossom/packages/helpers-sequelize":
+"@blossom-gql/helpers-sequelize@file:../../../../../usr/local/include/blossom/packages/helpers-sequelize":
   version "0.0.0"
 
-"@blossom-gql/toolbelt@file:../../../../usr/local/include/blossom/packages/toolbelt":
+"@blossom-gql/toolbelt@file:../../../../../usr/local/include/blossom/packages/toolbelt":
   version "0.0.0"
   dependencies:
     "@types/cosmiconfig" "^5.0.3"
@@ -5643,9 +5643,9 @@ uri-js@^4.2.2:
     punycode "^2.1.0"
 
 urijs@^1.19.0:
-  version "1.19.1"
-  resolved "https://registry.yarnpkg.com/urijs/-/urijs-1.19.1.tgz#5b0ff530c0cbde8386f6342235ba5ca6e995d25a"
-  integrity sha512-xVrGVi94ueCJNrBSTjWqjvtgvl3cyOTThp2zaMaFNGp3F542TR6sM3f2o8RqZl+AwteClSVmoCyt0ka4RjQOQg==
+  version "1.19.8"
+  resolved "https://registry.yarnpkg.com/urijs/-/urijs-1.19.8.tgz#ee0407a18528934d3c383e691912f47043a58feb"
+  integrity sha512-iIXHrjomQ0ZCuDRy44wRbyTZVnfVNLVo3Ksz1yxNyE5wV1IDZW2S5Jszy45DTlw/UdsnRT7DyDhIz7Gy+vJumw==
 
 urix@^0.1.0:
   version "0.1.0"
